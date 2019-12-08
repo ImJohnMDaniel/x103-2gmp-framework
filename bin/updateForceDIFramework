@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+
+# Framework module name
+FRAMEWORK_MODULE_NAME=force-di 
+
+# Framework module GitHub location
+FRAMEWORK_MODULE_GITHUB=git@github.com:apex-enterprise-patterns/force-di.git
+
+# with the parameters set above, call the runner script
+source bin/abstractFrameworkUpdateModuleRunner

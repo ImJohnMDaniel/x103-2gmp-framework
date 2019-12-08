@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+set -e
+
+# Framework module name
+FRAMEWORK_MODULE_NAME=fflib-apex-common
+
+# Framework module GitHub location
+FRAMEWORK_MODULE_GITHUB=git@github.com:apex-enterprise-patterns/fflib-apex-common.git
+
+RUN_ARTIFACT_DIR="target"
+
+FRAMEWORK_BASE_DIR='sfdx-source/framework'
+
+FRAMEWORK_MODULE_DIR="${FRAMEWORK_BASE_DIR}/${FRAMEWORK_MODULE_NAME}"
+
+if [ -d "$FRAMEWORK_MODULE_DIR" ];
+then
+    rm -f -R "${FRAMEWORK_MODULE_DIR}"
+fi
+
+if [ -d "$RUN_ARTIFACT_DIR" ]; 
+then
+    rm -f -R "${RUN_ARTIFACT_DIR}"
+fi
+
+mkdir -p "${RUN_ARTIFACT_DIR}"
+mkdir -p "${FRAMEWORK_MODULE_DIR}"
+mkdir -p "${FRAMEWORK_MODULE_DIR}/main"
+mkdir -p "${FRAMEWORK_MODULE_DIR}/main/classes"
+mkdir -p "${FRAMEWORK_MODULE_DIR}/main/labels"
+mkdir -p "${FRAMEWORK_MODULE_DIR}/test"
+mkdir -p "${FRAMEWORK_MODULE_DIR}/test/classes"
+mkdir -p "${FRAMEWORK_MODULE_DIR}/test/classes/mocks/"
+
+git clone ${FRAMEWORK_MODULE_GITHUB} ${RUN_ARTIFACT_DIR}
+
+mv ${RUN_ARTIFACT_DIR}/fflib/src/classes/*Test.cls ${FRAMEWORK_MODULE_DIR}/test/classes/
+mv ${RUN_ARTIFACT_DIR}/fflib/src/classes/*Test.cls-meta.xml ${FRAMEWORK_MODULE_DIR}/test/classes/
+mv ${RUN_ARTIFACT_DIR}/fflib/src/classes/fflib_SObjectMocks.cls ${FRAMEWORK_MODULE_DIR}/test/classes/mocks/
+mv ${RUN_ARTIFACT_DIR}/fflib/src/classes/fflib_SObjectMocks.cls-meta.xml ${FRAMEWORK_MODULE_DIR}/test/classes/mocks/
+mv ${RUN_ARTIFACT_DIR}/fflib/src/classes/*.cls ${FRAMEWORK_MODULE_DIR}/main/classes/
+mv ${RUN_ARTIFACT_DIR}/fflib/src/classes/*.cls-meta.xml ${FRAMEWORK_MODULE_DIR}/main/classes/
+mv ${RUN_ARTIFACT_DIR}/fflib/src/labels/CustomLabels.labels ${FRAMEWORK_MODULE_DIR}/main/labels/FFLIBApexCommonCustomLabels.labels-meta.xml
+
+
+if [ -d "$RUN_ARTIFACT_DIR" ]; 
+then
+    rm -f -R "${RUN_ARTIFACT_DIR}"
+fi
