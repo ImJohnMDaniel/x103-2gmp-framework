@@ -1,0 +1,17 @@
+{
+    "packageDirectories": [
+        {
+            "path": "sfdx-source/framework",
+            "default": true,
+            "package": "framework",
+            "versionName": "ver 0.1",
+            "versionNumber": "0.1.0.NEXT"
+        }
+    ],
+    "namespace": "x103",
+    "sfdcLoginUrl": "https://login.salesforce.com",
+    "sourceApiVersion": "47.0",
+    "packageAliases": {
+        "framework": "0Ho1T000000XZAbSAO"
+    }
+}
