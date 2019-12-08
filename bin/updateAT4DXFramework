@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -e
+
+# Framework module name
+FRAMEWORK_MODULE_NAME=at4dx
+
+# Framework original source location in GitHub repo
+FRAMEWORK_ORIGINAL_SOURCE_DIR=sfdx-source/core
+
+# Framework module GitHub location
+FRAMEWORK_MODULE_GITHUB=git@github.com:ImJohnMDaniel/at4dx.git
+
+# with the parameters set above, call the runner script
+source bin/abstractFrameworkUpdateModuleRunner
