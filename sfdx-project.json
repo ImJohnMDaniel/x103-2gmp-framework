@@ -12,6 +12,7 @@
     "sfdcLoginUrl": "https://login.salesforce.com",
     "sourceApiVersion": "47.0",
     "packageAliases": {
-        "framework": "0Ho1T000000XZAbSAO"
+        "framework": "0Ho1T000000XZAbSAO",
+        "framework@0.1.0-1": "04t1T000000V9beQAC"
     }
 }
